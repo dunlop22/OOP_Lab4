@@ -57,18 +57,26 @@ int main()
         {
             if (num_parcel > 0)         //имеются посылки для отправления
             {
+                int num_container = 0;
                 //распределение посылок по контейнерам
                 for (int i = 0; i < num_parcel; i++)
                 {
                     //solver
                     container** mass_container = new container * [0];
                     solver* solv = new solver;
-                    int num_container = 0;
+                    
                     solv->parcel_to_container(mass_container, parcel_spisok, num_parcel, &num_container);
                     //big_cont* ty = new big_cont[10];
                     //parcel_spisok[i].move(  );
                 }
 
+
+                //вывод контейнеров и их посылок
+
+                for (int i = 0; i < num_container; i++)
+                {
+
+                }
 
                 cout << "\n\nРаспредление закончено";
                 _getch();

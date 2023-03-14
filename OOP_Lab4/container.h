@@ -1,6 +1,7 @@
 #pragma once 
 #include <string>
 #include "transport.h"
+#include "parcel.h"
 using namespace std;
 
 class container
@@ -13,6 +14,7 @@ class container
 	int id;	//уникальный номер
 	int* spisok;	//массив с уникальными номерами посылок
 	string town;	//направление контейнера
+	parcel* parc;
 
 	public:
 		int kol_vo_parcel;
@@ -22,7 +24,7 @@ class container
 		this->id = 10000 + rand() % 90000;
 	}
 
-	public: virtual void get_parcel(int id)
+	public: virtual void get_parcel(parcel parc)
 	{
 		//новое поле под посылку, заполняется идентификационным номером
 		//копия старого списка посылок
@@ -36,8 +38,10 @@ class container
 
 		delete[] spisok_temp;    //очистка памяти
 
-
+		spisok[_msize(spisok) / sizeof(int) - 1] = id;
 	}
+
+
 
 	public: virtual void go_to_transport(transport * transp1)
 	{

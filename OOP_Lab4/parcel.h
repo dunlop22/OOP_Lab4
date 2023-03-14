@@ -22,7 +22,10 @@ private:
 	//int num_is_container;
 	//public virtaul void move
 
-
+public: int get_id()
+{
+	return (this->id);
+}
 
 public: void print_information()
 {
