@@ -10,6 +10,8 @@ class parcel
 {
 public:
 	int danger;
+	double obem;
+
 private: 
 	int id;
 	string town_sender;
@@ -72,6 +74,8 @@ public: void set_information()
 
 		cout << "\n\n¬ведите длину: ";
 		//cin >> this->dlina;
+
+		this->obem = this->dlina * this->visota * this->shirina;
 
 		cout << "\n\n¬ведите вес (кг.): ";
 		//cin >> this->weight;

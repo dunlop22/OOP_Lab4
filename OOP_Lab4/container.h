@@ -14,10 +14,11 @@ class container
 	int id;	//уникальный номер
 	int* spisok;	//массив с уникальными номерами посылок
 	string town;	//направление контейнера
-	parcel* parc;
+	parcel* parce;
 
 	public:
-		int kol_vo_parcel;
+		double free_obem;
+		int kol_vo_parcel = 0;
 
 	public: virtual void generate_id()
 	{
@@ -29,16 +30,22 @@ class container
 		//новое поле под посылку, заполняется идентификационным номером
 		//копия старого списка посылок
 
-		int* spisok_temp = spisok;       //создание временного массива для копии
-		spisok = new int[_msize(spisok) / sizeof(int) + 1]; //создание динамического массива с новыми размерами
-		for (int i = 0; i < _msize(spisok) / sizeof(int) - 1; i++)
+
+		//увеличение размера динамического массива
+		parcel* parce_temp = parce;       //создание временного массива для копии
+		parce = new parcel[_msize(parce) / sizeof(parcel) + 1]; //создание динамического массива с новыми размерами
+		for (int i = 0; i < _msize(parce) / sizeof(parcel) - 1; i++)
 		{
-			spisok[i] = spisok_temp[i];
+			parce[i] = parce_temp[i];
 		}
 
-		delete[] spisok_temp;    //очистка памяти
+		delete[] parce_temp;    //очистка памяти
 
-		spisok[_msize(spisok) / sizeof(int) - 1] = id;
+		parce[_msize(parce) / sizeof(parcel) - 1] = parc;
+
+
+		kol_vo_parcel = kol_vo_parcel + 1;
+		free_obem = free_obem - parc.obem;
 	}
 
 
@@ -58,15 +65,18 @@ class container
 		return (this->town);
 	}
 
-	public: virtual int check_parcel()	//проверка наличия свободного места
+public: virtual int check_free_obem(double obem)	//проверка наличия свободного места
+{
+	if (free_obem - obem > 0)
 	{
-		return kol_vo_parcel;
+		return true;
 	}
+	else
+	{
+		return false;
+	}
+}
 
-	public: virtual void set_parcel_minus()	//проверка наличия свободного места
-	{
-		kol_vo_parcel = kol_vo_parcel - 1;
-	}
 
 };
 
