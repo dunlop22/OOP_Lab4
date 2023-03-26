@@ -14,7 +14,7 @@ class container
 	int id;	//уникальный номер
 	int* spisok;	//массив с уникальными номерами посылок
 	string town;	//направление контейнера
-	parcel* parce;
+	parcel* parce = new parcel;
 
 	public:
 		double free_obem;

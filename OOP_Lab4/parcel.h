@@ -28,17 +28,19 @@ public: int get_id()
 {
 	return (this->id);
 }
-
+	  //вывод информации о посылке
 public: void print_information()
 {
 	cout << this->id << " : " << this->town_sender << "-->" << this->town_recipient << "  (" << this->shirina << "x" << this->dlina << "x" << this->visota << ") " << this->weight << "кг.\n";
 }
+	  //генерация случайного номера для посылки (реализовать проверку уникальности)
 public: void generate_id()
 {
 	//генерация случайного 8-ми значного номера id
 	this->id = 10000000 + rand() % 90000000;
 	//проверка индивидуальности данного номера (как???)
 }
+	  //получение города получателя
 public: string get_town()
 {
 	return (this->town_recipient);
@@ -88,11 +90,11 @@ public: void set_information()
 		cout << "\n\nЛюбая клавиша для подтверждения";
 		_getch();
 	}
-
+	  /*
 	public: virtual void move(container * cont1)		//от решателя
 	{
 		cont1->get_parcel(id);
 	}
-
+	*/
 };
 

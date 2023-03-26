@@ -35,15 +35,13 @@ class solver
 				//проверка наличия свободного места к существующих контейнерах
 				for (int j = 0; j < *num_container; j++)
 				{
-					if (container_mass[j]->check_parcel() > 0)
+					if (container_mass[j]->check_free_obem(parcel_mass[i].obem) > 0)
 					{
 						//проверка города направления
 						if (container_mass[j]->get_town() == parcel_mass[i].get_town())
 						{
-							container_mass[j]->set_parcel_minus();
-							container_mass[j]->get_parcel(parcel_mass[i].get_id());	//добавление 
-
-
+							//container_mass[j]->set_parcel_minus();
+							container_mass[j]->get_parcel(parcel_mass[i]);	//добавление 
 						}
 					}
 				}
